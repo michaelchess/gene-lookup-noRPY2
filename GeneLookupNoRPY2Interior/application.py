@@ -3,9 +3,9 @@ from flask import Flask, request, Response, session, g, redirect, url_for, \
 import os
 import StringIO
 
-#DEBUG = True
-app = Flask(__name__)
-app.config.from_object(__name__)
+DEBUG = True
+application = Flask(__name__)
+application.config.from_object(__name__)
 
 studyFiles=[]
 mutationFiles=[]
@@ -126,4 +126,4 @@ def downloadGeneMuts(downloadString):
 	return send_file(downloadableInfo, attachment_filename="GeneMutations.csv", as_attachment=True)
 
 if __name__ == '__main__':
-	app.run()
+	application.run()
