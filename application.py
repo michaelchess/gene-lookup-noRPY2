@@ -9,11 +9,11 @@ application.config.from_object(__name__)
 
 studyFiles=[]
 mutationFiles=[]
-for file in os.listdir('data'):
+for file in os.listdir('application/data'):
 	if 'header' in file:
-		studyFiles.append(open('data/'+file, 'r'))
+		studyFiles.append(open('application/data/'+file, 'r'))
 	elif 'dnm' in file:
-		mutationFiles.append(open('data/'+file, 'r'))
+		mutationFiles.append(open('application/data/'+file, 'r'))
 
 groupsOfStudies = []
 for file in studyFiles:
@@ -26,7 +26,7 @@ for file in studyFiles:
 			studyGroup.append(line.split('\t'))
 	studyGroupId = file.name.split('_')
 	studyGroup.append(studyGroupName)
-	studyGroup.append(studyGroupId[0].replace('data/', ''))
+	studyGroup.append(studyGroupId[0].replace('application/data/', ''))
 	groupsOfStudies.append(studyGroup)
 
 groupsOfMutations = []
@@ -34,7 +34,7 @@ triosPerStudyGroup = []
 numTrios = 0
 for file in mutationFiles:
 	mutationGroup =[]
-	theGroup = file.name.replace('data/', '').split('_')
+	theGroup = file.name.replace('application/data/', '').split('_')
 	mutStudyGroup = 'NA'
 	for line in file:
 		theMutationInfo = line.split('\t')
@@ -67,7 +67,7 @@ def lookupGene():
 	theGene = request.form['requestedGene']
 	groupsMutsReturn = []
 	downloadableInfo = StringIO.StringIO()
-	constrainList = open('constrained_1003.txt', 'r')
+	constrainList = open('application/constrained_1003.txt', 'r')
 	constrained = False
 	for line in constrainList:
 		if theGene == line.replace('\n', ''):
@@ -83,7 +83,7 @@ def lookupGene():
 	
 	nonStringIO = theGene+'\n\n'
 	
-	geneData = open('esp6500_ac10_Zdata.txt', 'r')
+	geneData = open('application/esp6500_ac10_Zdata.txt', 'r')
 	allData = geneData.read()
 	eachGene = allData.split('\r')
 	genesArray = []
