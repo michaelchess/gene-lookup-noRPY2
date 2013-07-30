@@ -55,14 +55,14 @@ for group in groupsOfStudies:
 				numTrios += int(study[1])
 	triosPerStudyGroup.append(numTrios)
 	numTrios = 0
-@app.route('/')
+@application.route('/')
 def initialize():
 	return render_template('GeneLookupNoRPY2.html', geneMutations=None)
 
 downloadableInfo = StringIO.StringIO()
 theGene = ''
 mutsForFile = []
-@app.route('/lookupGene', methods=['POST'])
+@application.route('/lookupGene', methods=['POST'])
 def lookupGene():
 	theGene = request.form['requestedGene']
 	groupsMutsReturn = []
@@ -118,7 +118,7 @@ def lookupGene():
 	holderTwoNumTrios = list(triosPerStudyGroup)
 	return render_template('GeneLookupNoRPY2.html', geneMutations=groupsMutsReturn, isConstrained = constrained, strForDwnld = nonStringIO, otherGeneInfo = geneSuppInfo, triosPerStudy = holderNumTrios, secondTriosPerStudy = holderTwoNumTrios)
 
-@app.route('/downloadGeneMuts/<downloadString>')
+@application.route('/downloadGeneMuts/<downloadString>')
 def downloadGeneMuts(downloadString):
 	downloadableInfo = StringIO.StringIO()
 	downloadableInfo.write(str(downloadString))
