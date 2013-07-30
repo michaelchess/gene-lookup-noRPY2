@@ -33,4 +33,7 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+<<<<<<< HEAD
 .elasticbeanstalk/
+=======
+>>>>>>> 17f16d5bcaff065b8ee2b474c2ef4d6cd93e6d12
