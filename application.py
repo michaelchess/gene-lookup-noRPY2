@@ -110,12 +110,12 @@ def lookupGene():
 		nonStringIO += '\n\nThis gene is not constrained.\n\n'
 	for group in groupsMutsReturn:
 		nonStringIO += group[len(group)-1]
-		nonStringIO += 'Mutation Type, AAchange, Chr, Pos, Ref, Alt, Study, Link to study\n'
+		nonStringIO += 'Mutation Type, AAchange, Chr, Pos, Ref, Alt, Study\n'
 		#nonStringIO += 'Gene Name, Mutations, #Lof, Prob(LoF), Prob(LoF+mis), Prob(mis), 2*prob, exp#, ppois, Compared to\n'
 		for mut in group:
 			if len(mut) >= 9:
 				if len(mut[8]) >= 4:
-					nonStringIO += mut[0]+','+mut[1]+','+mut[2]+','+mut[3]+','+mut[4]+','+mut[5]+','+mut[6]+','+mut[8][2]+' with '+mut[8][1]+' trios\n'
+					nonStringIO += mut[1]+','+mut[2]+','+mut[3]+','+mut[4]+','+mut[5]+','+mut[6]+','+mut[8][2]+' with '+mut[8][1]+' trios\n'
 	holderNumTrios = list(triosPerStudyGroup)
 	holderTwoNumTrios = list(triosPerStudyGroup)
 	return render_template('GeneLookupNoRPY2.html', geneMutations=groupsMutsReturn, isConstrained = constrained, strForDwnld = nonStringIO, otherGeneInfo = geneSuppInfo, triosPerStudy = holderNumTrios, secondTriosPerStudy = holderTwoNumTrios)
