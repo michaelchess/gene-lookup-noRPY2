@@ -101,13 +101,13 @@ def lookupGene():
 	if geneSuppInfo != None:
 		if geneSuppInfo[1].lower() == 'gene':
 			geneSuppInfo = None
-		nonStringIO += 'Chromosome:,'+geneSuppInfo[2]+'\nStart--Stop:,'+geneSuppInfo[3]+'--'+geneSuppInfo[4]+'\n# BasePairs:,'+geneSuppInfo[5]
-		nonStringIO += 'Per Trio Probability of Mutation:\n , Synonymous:,'+repr(geneSuppInfo[7])+'\n ,Missense:,'+repr(geneSuppInfo[8])+'\n ,Loss of Function:,'+repr(geneSuppInfo[9])
+		nonStringIO += 'Chromosome:,'+geneSuppInfo[2]+'\nStart--Stop:,'+geneSuppInfo[3]+'--'+geneSuppInfo[4]+'\n# BasePairs:,'+geneSuppInfo[5]+'\n'
+		nonStringIO += 'Per Trio Probability of Mutation:\n , Synonymous:,'+repr(geneSuppInfo[7])+'\n ,Missense:,'+repr(geneSuppInfo[8])+'\n ,Loss of Function:,'+repr(geneSuppInfo[9])+'\n'
 		nonStringIO += 'Constraint Scores:\n ,Z syn:,'+geneSuppInfo[23]+'\n ,Z mis:,'+geneSuppInfo[24]+'\n ,Z LoF:,'+geneSuppInfo[26]
 	if constrained == True:
 		nonStringIO += '\n\nThis gene is constrained.\n'
 	else:
-		nonStringIO += '\n\nThis gene is not constrained.\n'
+		nonStringIO += '\n\nThis gene is not constrained.\n\n'
 	for group in groupsMutsReturn:
 		nonStringIO += group[len(group)-1]
 		nonStringIO += 'Mutation Type, AAchange, Chr, Pos, Ref, Alt, Study, Link to study\n'
