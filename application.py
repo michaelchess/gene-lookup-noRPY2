@@ -65,6 +65,7 @@ mutsForFile = []
 @application.route('/lookupGene', methods=['POST'])
 def lookupGene():
 	theGene = request.form['requestedGene']
+	theGene = theGene.upper()
 	groupsMutsReturn = []
 	downloadableInfo = StringIO.StringIO()
 	constrainList = open('application/constrained_1003.txt', 'r')
@@ -91,7 +92,7 @@ def lookupGene():
 		genesArray.append(gene.split('\t'))
 	geneSuppInfo = None
 	for gene in genesArray:
-		if gene[1].lower() == theGene.lower():
+		if gene[1] == theGene:
 			geneSuppInfo = gene
 			geneSuppInfo[7] = float(geneSuppInfo[7])*2
 			geneSuppInfo[8] = float(geneSuppInfo[8])*2
