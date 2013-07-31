@@ -89,7 +89,7 @@ def lookupGene():
 	genesArray = []
 	for gene in eachGene:
 		genesArray.append(gene.split('\t'))
-	geneSuppInfo = genesArray[0]
+	geneSuppInfo = None
 	for gene in genesArray:
 		if gene[1] == theGene:
 			geneSuppInfo = gene
@@ -97,11 +97,12 @@ def lookupGene():
 			geneSuppInfo[8] = float(geneSuppInfo[8])*2
 			geneSuppInfo[9] = float(geneSuppInfo[9])*2
 			break
-	if geneSuppInfo[1] == 'gene':
-		geneSuppInfo = None
-	nonStringIO += 'Chromosome:,'+geneSuppInfo[2]+'\nStart--Stop:,'+geneSuppInfo[3]+'--'+geneSuppInfo[4]+'\n# BasePairs:,'+geneSuppInfo[5]
-	nonStringIO += 'Per Trio Probability of Mutation:\n , Synonymous:,'+repr(geneSuppInfo[7])+'\n ,Missense:,'+repr(geneSuppInfo[8])+'\n ,Loss of Function:,'+repr(geneSuppInfo[9])
-	nonStringIO += 'Constraint Scores:\n ,Z syn:,'+geneSuppInfo[23]+'\n ,Z mis:,'+geneSuppInfo[24]+'\n ,Z LoF:,'+geneSuppInfo[26]
+	if geneSuppInfo != None:
+		if geneSuppInfo[1] == 'gene':
+			geneSuppInfo = None
+		nonStringIO += 'Chromosome:,'+geneSuppInfo[2]+'\nStart--Stop:,'+geneSuppInfo[3]+'--'+geneSuppInfo[4]+'\n# BasePairs:,'+geneSuppInfo[5]
+		nonStringIO += 'Per Trio Probability of Mutation:\n , Synonymous:,'+repr(geneSuppInfo[7])+'\n ,Missense:,'+repr(geneSuppInfo[8])+'\n ,Loss of Function:,'+repr(geneSuppInfo[9])
+		nonStringIO += 'Constraint Scores:\n ,Z syn:,'+geneSuppInfo[23]+'\n ,Z mis:,'+geneSuppInfo[24]+'\n ,Z LoF:,'+geneSuppInfo[26]
 	if constrained == True:
 		nonStringIO += '\n\nThis gene is constrained.\n'
 	else:
