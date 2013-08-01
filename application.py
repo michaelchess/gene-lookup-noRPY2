@@ -84,6 +84,9 @@ def lookupGene():
 	
 	nonStringIO = theGene+'\n\n'
 	
+	for group in groupsMutsReturn:
+		group[len(group)-1] = group[len(group)-1].rstrip()
+	
 	geneData = open('application/esp6500_ac10_Zdata.txt', 'r')
 	allData = geneData.read()
 	eachGene = allData.split('\r')
