@@ -29,6 +29,8 @@
 		{% else %}
 			<p>This gene is not constrained.</p>
 		{% endif %}
+		<button onclick="showAll()">Show All</button>
+		<button onclick="hideAll()">Hide All</button>
 		{% for group in geneMutations: %}
 			<h2><b>{{ group[(group|length)-1] }}</b></h2>
 			<button onclick="ShowHide('{{ group[(group|length)-1] }}');">Show/Hide</button>
@@ -73,13 +75,25 @@
 	{% endif %}
 	{% endif %}
 	<script type="text/javascript">
+		function showAll(){
+			divs = document.getElementsByTagName('div');
+			for(var i = 0; i < divs.length; i++){
+				divs[i].style.display = 'inline';
+			}
+		}
+		function hideAll(){
+			divs = document.getElementsByTagName('div');
+			for(var i = 0; i < divs.length; i++){
+				divs[i].style.display = 'none';
+			}
+		}
 		function ShowHide(divId){
 			if(document.getElementById(divId).style.display == 'none'){
 				document.getElementById(divId).style.display = 'inline';
 			} else {
 				document.getElementById(divId).style.display = 'none';
 			}
-		};
+		}
 	</script>
 </body>
 </html>
